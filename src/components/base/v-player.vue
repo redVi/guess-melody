@@ -1,0 +1,59 @@
+<template>
+  <div class="player-wrapper">
+    <div class="player">
+      <audio
+        :src="src"
+        :type="type"
+      ></audio>
+
+      <button class="player-control player-control--pause"></button>
+      <div class="player-track">
+        <span class="player-status"></span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'v-player',
+  props: {
+    src: {
+      type: String,
+      default: '',
+    },
+    type: {
+      type: String,
+      default: 'audio/mp3',
+    },
+  },
+};
+</script>
+
+<style lang="stylus" scoped>
+.player-wrapper
+  animation: fadein 1000ms ease-out
+  animation-iteration-count: 1
+  background: url("/img/player-background.png") no-repeat 0 100%
+  background-size: cover
+  margin-right: 20px
+
+.player-control
+  border: 0
+  display: block
+  width: 46px
+  height: 52px
+  background-color: transparent
+  background-image: url("/img/icon-player-controls-sprite.png")
+  background-repeat: no-repeat
+  &--play
+    background-position: 0 0
+  &--pause
+    background-position: 0 -52px
+
+@keyframes fadein
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+</style>
