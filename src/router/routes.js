@@ -1,12 +1,8 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Home from './views/home.vue';
+import Home from '@/views/home.vue';
 
-const load = component => () => import(`./views/${component}.vue`);
+const load = component => () => import(/* webpackChunkName: "[request]" */ `@/views/${component}.vue`);
 
-Vue.use(Router);
-
-const routes = [
+export default [
   {
     path: '/',
     name: 'home',
@@ -32,9 +28,3 @@ const routes = [
     component: Home,
   },
 ];
-
-export default new Router({
-  mode: 'hash',
-  base: process.env.BASE_URL,
-  routes,
-});

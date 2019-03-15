@@ -1,13 +1,15 @@
 <template>
   <section class="main main--welcome">
     <v-logo />
-    <button class="main-play" @click="nextScreen">Начать игру</button>
-    <h2 class="title main-title">Правила игры</h2>
-    <p class="text main-text">
-      Правила просты&nbsp;— за&nbsp;5 минут ответить на все вопросы.<br>
-      Ошибиться можно 3 раза.<br>
-      Удачи!
-    </p>
+    <button class="main-play" @click="nextScreen">
+      {{ $t('play') }}
+    </button>
+
+    <h2 class="title main-title">
+      {{ $t('rules') }}
+    </h2>
+
+    <p class="text main-text" v-html="$t('description')"></p>
   </section>
 </template>
 

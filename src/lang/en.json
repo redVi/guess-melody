@@ -1,0 +1,22 @@
+{
+    "play": "Play game",
+    "rules": "Game rules",
+    "description": "For 5 minutes you need to answer all questions.<br/>You can make a mistake 3 times.<br/>Good luck!",
+    "answer": "Reply",
+    "artist": {
+        "title": "Who sings this song?"
+    },
+    "genre": {
+        "title": "Select {n} tracks"
+    },
+    "play_again": "Play again",
+    "compare": "It's better than {n} player|players.",
+    "success": {
+        "title": "You're a real music lover!",
+        "stat": "In {time} minute|minutes <br/>you guessed {tracks} melody|melodies"
+    },
+    "fail": {
+        "title": "You have lost",
+        "stat": "Nothing, you'll be lucky next time"
+    }
+}
