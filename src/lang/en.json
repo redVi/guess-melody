@@ -10,10 +10,10 @@
         "title": "Select {n} tracks"
     },
     "play_again": "Play again",
-    "compare": "It's better than {n} player|players.",
+    "compare": "It's better than #{value} ((player|players)):value.",
     "success": {
         "title": "You're a real music lover!",
-        "stat": "In {time} minute|minutes <br/>you guessed {tracks} melody|melodies"
+        "stat": "In #{time} ((minute|minutes)):time <br/>you guessed #{tracks} ((melody|melodies)):tracks"
     },
     "fail": {
         "title": "You have lost",
