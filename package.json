@@ -7,7 +7,11 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test": "vue-cli-service test:unit"
+    "test": "vue-cli-service test:unit -R nyan",
+    "precommit": "npm run lint & npm run test"
+  },
+  "gitHooks": {
+    "pre-commit": "npm run precommit"
   },
   "dependencies": {
     "register-service-worker": "^1.6.2",
