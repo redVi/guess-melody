@@ -4,7 +4,7 @@
     <v-lives />
     <div class="main-wrap">
       <h2 class="title main-title">
-        Кто исполняет эту песню?
+        {{ $t('artist.title') }}
       </h2>
 
       <v-player :src="question.song.path" />

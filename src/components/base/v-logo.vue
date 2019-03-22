@@ -1,6 +1,6 @@
 <template>
-  <section class="logo" title="Угадай мелодию">
-    <h1>Угадай мелодию</h1>
+  <section class="logo" :title="$t('game_title')">
+    <h1>{{ $t('game_title') }}</h1>
   </section>
 </template>
 

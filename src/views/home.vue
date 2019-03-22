@@ -26,10 +26,6 @@ export default {
       type: Number,
       default: 0,
     },
-    game: {
-      type: Object,
-      default: () => ({}),
-    },
     questions: {
       type: Array,
       default: () => [],

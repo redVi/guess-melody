@@ -4,7 +4,7 @@
     <v-lives />
     <div class="main-wrap">
       <h2 class="title">
-        Выберите {{ question.genre }} треки
+        {{ $t('genre.title', { n: question.genre }) }}
       </h2>
 
       <form class="genre" @submit.prevent="checkAnswer">
@@ -21,7 +21,9 @@
         <button
           class="genre-answer-send"
           type="submit"
-        >Ответить</button>
+        >
+          {{ $t('answer') }}
+        </button>
       </form>
     </div>
   </section>
