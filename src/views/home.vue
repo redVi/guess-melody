@@ -1,44 +1,38 @@
 <template>
   <section class="main main--welcome">
     <v-logo />
-    <button class="main-play" @click="nextScreen">
-      {{ $t('play') }}
-    </button>
+
+    <button
+      class="main-play"
+      v-html="$t('play')"
+      @click="nextLevel"
+    />
 
     <h2 class="title main-title">
       {{ $t('rules') }}
     </h2>
 
-    <p class="text main-text" v-html="$t('description')"></p>
+    <p class="text main-text" v-html="$t('description')" />
   </section>
 </template>
 
 <script>
+import gamePropsMixin from '@/mixins/gamePropsMixin';
+import gameQuestionMixin from '@/mixins/gameQuestionMixin';
 import VLogo from '@/components/base/v-logo.vue';
 
 export default {
-  name: 'home',
+  name: 'Home',
+  mixins: [gamePropsMixin, gameQuestionMixin],
   components: {
     VLogo,
   },
-  props: {
-    level: {
-      type: Number,
-      default: 0,
-    },
-    questions: {
-      type: Array,
-      default: () => [],
-    },
+  created() {
+    this.$store.dispatch('game/FILL_QUESTIONS');
   },
   methods: {
-    nextScreen() {
-      const question = this.questions[0];
-
-      this.$router.push({
-        name: question.type,
-        params: { question, level: this.level },
-      });
+    nextLevel() {
+      this.$router.push({ name: this.question.type });
     },
   },
 };

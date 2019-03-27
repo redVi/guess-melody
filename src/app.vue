@@ -1,20 +1,16 @@
 <template>
   <main class="app">
-    <router-view
-      :level="level"
-      @level="level = level + 1"
-      :questions="questions" />
+    <router-view :game="game" />
   </main>
 </template>
 
 <script>
-const questions = require('./store/questions.json');
-
 export default {
-  data: () => ({
-    level: 0,
-    questions: questions.questions,
-  }),
+  computed: {
+    game() {
+      return this.$store.getters['game/GET_GAME'];
+    },
+  },
 };
 </script>
 

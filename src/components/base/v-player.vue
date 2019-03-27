@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'v-player',
+  name: 'VPlayer',
   props: {
     src: {
       type: String,

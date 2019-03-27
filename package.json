@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "vue-cli-service serve --copy",
+    "build": "vue-cli-service build --modern --report",
     "test": "vue-cli-service test:unit -R nyan",
     "lint": "vue-cli-service lint",
+    "help": "vue-cli-service help",
+    "inspect": "vue-cli-service inspect",
     "precommit": "npm run lint & npm run test"
   },
   "dependencies": {
     "register-service-worker": "^1.6.2",
-    "vue": "^2.6.6",
+    "vue": "^2.6.10",
     "vue-i18n": "^8.9.0",
     "vue-i18n-babelfish": "^1.0.1",
     "vue-router": "^3.0.1",
@@ -27,11 +29,11 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "^10.0.1",
     "chai": "^4.1.2",
-    "eslint": "^5.8.0",
+    "eslint": "^5.15.3",
     "eslint-plugin-vue": "^5.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vue-template-compiler": "^2.6.8"
+    "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
     "root": true,
@@ -42,7 +44,9 @@
       "plugin:vue/essential",
       "@vue/airbnb"
     ],
-    "rules": {},
+    "rules": {
+      "no-param-reassign": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
@@ -54,8 +58,7 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
+    "last 2 versions"
   ],
   "homepage": "https://redvi.github.io"
 }

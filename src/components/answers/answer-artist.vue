@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'artist-answer',
+  name: 'ArtistAnswer',
   props: {
     id: {
       type: Number,

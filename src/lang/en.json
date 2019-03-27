@@ -8,7 +8,7 @@
         "title": "Who sings this song?"
     },
     "genre": {
-        "title": "Select {n} tracks"
+        "title": "Select #{n} tracks"
     },
     "play_again": "Play again",
     "compare": "It's better than #{value} ((player|players)):value.",

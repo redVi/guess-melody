@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'v-lives',
+  name: 'VLives',
   props: {
     lives: {
       type: Number,

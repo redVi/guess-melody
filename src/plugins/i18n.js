@@ -2,8 +2,8 @@ import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import BabelfishFormatter from 'vue-i18n-babelfish';
 
-import en from '../lang/en.json';
-import ru from '../lang/ru.json';
+import en from '@/lang/en.json';
+import ru from '@/lang/ru.json';
 
 Vue.use(VueI18n);
 

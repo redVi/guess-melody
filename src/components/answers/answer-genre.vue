@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'genre-answer',
+  name: 'GenreAnswer',
   props: {
     id: {
       type: Number,

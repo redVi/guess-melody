@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'v-timer',
+  name: 'VTimer',
   props: {
     minutes: {
       type: Number,

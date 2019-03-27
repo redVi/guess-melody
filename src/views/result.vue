@@ -12,7 +12,7 @@
       role="button"
       tabindex="0"
       class="main-replay"
-      @click="nextScreen"
+      @click="playAgain"
     >
       {{ $t('play_again') }}
     </span>
@@ -20,28 +20,31 @@
 </template>
 
 <script>
+import gamePropsMixin from '@/mixins/gamePropsMixin';
 import VLogo from '@/components/base/v-logo.vue';
 
 export default {
-  name: 'result',
+  name: 'Result',
+  mixins: [gamePropsMixin],
   components: {
     VLogo,
   },
-  data: () => ({
-    success: true,
-  }),
   computed: {
+    success() {
+      return Object.keys(this.$route.params).length && this.$route.params.success;
+    },
     title() {
       return this.success ? this.$t('success.title') : this.$t('fail.title');
     },
     stat() {
       return this.success
-        ? this.$t('success.stat', { time: 5, tracks: 8 })
+        ? this.$t('success.stat', { time: 5, tracks: this.game.guessedTracks })
         : this.$t('fail.stat');
     },
   },
   methods: {
-    nextScreen() {
+    playAgain() {
+      this.$store.commit('game/RESET_STATE');
       this.$router.push({ name: 'home' });
     },
   },
