@@ -1,4 +1,9 @@
 const nextLevelMixin = {
+  created() {
+    if (typeof this.question === 'undefined') {
+      this.$router.push({ name: 'home' });
+    }
+  },
   methods: {
     updateGameState(args) {
       this.$store.commit('game/REMOVE_QUESTION');
@@ -9,6 +14,7 @@ const nextLevelMixin = {
 
       if (game.questions.length <= 0 || game.lives <= 0) {
         $router.push({ name: 'result', params: { success: game.lives > 0 } });
+
         return;
       }
 

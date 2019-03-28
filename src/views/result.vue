@@ -29,9 +29,18 @@ export default {
   components: {
     VLogo,
   },
+  created() {
+    if (!Object.keys(this.$route.query).length) {
+      return;
+    }
+
+    this.$route.params.success = true;
+  },
   computed: {
     success() {
-      return Object.keys(this.$route.params).length && this.$route.params.success;
+      const { params } = this.$route;
+
+      return Object.keys(params).length && params.success;
     },
     title() {
       return this.success ? this.$t('success.title') : this.$t('fail.title');

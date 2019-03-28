@@ -1,7 +1,7 @@
 <template>
   <section class="main main--level main--level-genre">
     <v-timer />
-    <v-lives />
+    <v-lives :lives="game.lives" />
 
     <div class="main-wrap">
       <h2 class="title">
@@ -16,7 +16,7 @@
           :value="track.genre"
           ref="answer"
         >
-          <v-player slot="player" :src="question.path" />
+          <v-player slot="player" :src="track.path" />
         </answer-genre>
 
         <button

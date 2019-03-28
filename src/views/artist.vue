@@ -1,14 +1,14 @@
 <template>
   <section class="main main--level main--level-artist">
     <v-timer />
-    <v-lives />
+    <v-lives :lives="game.lives" />
 
     <div class="main-wrap">
       <h2 class="title main-title">
         {{ $t('artist.title') }}
       </h2>
 
-      <!-- <v-player :src="question.song.path" /> -->
+      <v-player :src="question.song.path" />
 
       <form class="main-list" action="">
         <answer-artist
@@ -57,7 +57,6 @@ export default {
   methods: {
     checkAnswer() {
       const answer = this.answer === this.question.song.title;
-      console.log(answer);
 
       this.updateGameState({ answer });
       this.nextLevel();

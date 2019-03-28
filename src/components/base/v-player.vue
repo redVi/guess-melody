@@ -4,6 +4,7 @@
       <audio
         :src="src"
         :type="type"
+        controls
       ></audio>
 
       <button class="player-control player-control--pause"></button>
