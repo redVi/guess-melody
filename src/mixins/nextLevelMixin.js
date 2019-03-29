@@ -1,5 +1,10 @@
 const nextLevelMixin = {
+  data: () => ({
+    startTime: new Date().getTime(),
+  }),
   created() {
+    this.startTime = new Date().getTime();
+
     if (typeof this.question === 'undefined') {
       this.$router.push({ name: 'home' });
     }

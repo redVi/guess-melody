@@ -1,5 +1,8 @@
 <template>
-  <div class="genre-answer">
+  <div
+    v-if="value && id"
+    class="genre-answer"
+  >
     <slot name="player"></slot>
     <input
       type="checkbox"
@@ -18,12 +21,12 @@ export default {
   name: 'GenreAnswer',
   props: {
     id: {
-      type: Number,
-      default: 0,
+      type: String,
+      required: true,
     },
     value: {
       type: String,
-      default: '',
+      required: true,
     },
   },
   data: () => ({
@@ -33,6 +36,9 @@ export default {
     isChecked() {
       this.checked = !this.checked;
     },
+  },
+  update() {
+    this.checked = false;
   },
 };
 </script>

@@ -1,5 +1,9 @@
 <template>
-  <div class="main-answer-wrapper" @click.prevent="nextScreen">
+  <div
+    v-if="id && value"
+    class="main-answer-wrapper"
+    @click.prevent="checkAnswer"
+  >
     <input class="main-answer-r" type="radio" :id="id" name="answer" :value="value"/>
     <label class="main-answer" :for="id">
       <img class="main-answer-preview" :src="preview"
@@ -14,12 +18,12 @@ export default {
   name: 'ArtistAnswer',
   props: {
     id: {
-      type: Number,
-      default: 0,
+      type: String,
+      required: true,
     },
     value: {
       type: String,
-      default: '',
+      required: true,
     },
     preview: {
       type: String,
@@ -31,8 +35,8 @@ export default {
     },
   },
   methods: {
-    nextScreen() {
-      this.$emit('screen');
+    checkAnswer() {
+      this.$emit('check');
     },
   },
 };

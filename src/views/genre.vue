@@ -11,8 +11,8 @@
       <form class="genre" @submit.prevent="checkAnswer">
         <answer-genre
           v-for="(track, index) in question.tracks"
-          :key="index"
-          :id="index"
+          :key="`${track.genre}-${index}`"
+          :id="`${track.genre}-${index}`"
           :value="track.genre"
           ref="answer"
         >
@@ -57,10 +57,22 @@ export default {
   },
   methods: {
     checkAnswer() {
+      const { question } = this;
+      const resultTime = this.startTime - new Date().getTime();
       const answers = Array.from(this.$refs.answer).filter(item => item.checked);
-      const rightAnswer = answers.every(item => item.value === this.question.genre);
 
-      this.updateGameState({ answer: rightAnswer });
+      // the rules to check the correctness of all answers
+      const tracksLength = question.tracks.filter(track => track.genre === question.genre).length;
+      const answersLength = answers.length;
+      const isCorrectValues = answers.every(item => item.value === question.genre);
+      const isCorrectLength = tracksLength === answersLength;
+
+      this.updateGameState({
+        answer: isCorrectValues && isCorrectLength,
+        time: resultTime,
+        guessedTracks: answersLength,
+      });
+
       this.nextLevel();
     },
   },

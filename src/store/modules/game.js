@@ -5,6 +5,7 @@ const initialState = () => ({
   totalPointsEarned: 0,
   guessedTracks: 0,
   questions: [],
+  time: 0,
 });
 
 const state = initialState();
@@ -24,11 +25,12 @@ const mutations = {
     st.questions.splice(0, 1);
   },
   UPDATE_GAME(st, payload) {
-    const { answer, guessedTracks } = payload;
+    const { answer, guessedTracks, time } = payload;
 
     if (answer) {
       st.totalPointsEarned += 1;
       st.guessedTracks += guessedTracks || 1;
+      st.time = time || st.time;
 
       return;
     }

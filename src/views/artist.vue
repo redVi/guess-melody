@@ -13,13 +13,12 @@
       <form class="main-list" action="">
         <answer-artist
           v-for="(artist, index) in question.artists"
-          :key="index"
-          :id="index"
+          :key="`${artist.value}-${index}`"
+          :id="`${artist.value}-${index}`"
           :value="artist.value"
           :preview="artist.preview"
           :title="artist.title"
-          @click.prevent="answer = artist.title"
-          @screen="checkAnswer(artist.title)"
+          @check="checkAnswer(artist.title)"
         />
       </form>
     </div>
@@ -51,12 +50,9 @@ export default {
     VTimer,
     VPlayer,
   },
-  data: () => ({
-    answer: '',
-  }),
   methods: {
-    checkAnswer() {
-      const answer = this.answer === this.question.song.title;
+    checkAnswer(value) {
+      const answer = value === this.question.song.title;
 
       this.updateGameState({ answer });
       this.nextLevel();
