@@ -1,16 +1,18 @@
 <template>
-  <section class="main main--level main--level-artist">
-    <v-timer />
-    <v-lives :lives="game.lives" />
-
+  <section :class="`main main--level main--level-${this.question.type}`">
     <div class="main-wrap">
       <h2 class="title main-title">
         {{ $t('artist.title') }}
       </h2>
 
-      <v-player :src="question.song.path" />
+      <v-player
+        v-if="question.song"
+        :it-should-be-play="true"
+        :src="question.song.path"
+        :key="uniqPlayerKey"
+      />
 
-      <form class="main-list" action="">
+      <div class="main-list">
         <answer-artist
           v-for="(artist, index) in question.artists"
           :key="`${artist.value}-${index}`"
@@ -20,7 +22,7 @@
           :title="artist.title"
           @check="checkAnswer(artist.title)"
         />
-      </form>
+      </div>
     </div>
   </section>
 </template>
@@ -33,8 +35,6 @@ import nextLevelMixin from '@/mixins/nextLevelMixin';
 
 // components
 import AnswerArtist from '@/components/answers/answer-artist.vue';
-import VLives from '@/components/base/v-lives.vue';
-import VTimer from '@/components/base/v-timer.vue';
 import VPlayer from '@/components/base/v-player.vue';
 
 export default {
@@ -44,18 +44,27 @@ export default {
     gameQuestionMixin,
     nextLevelMixin,
   ],
+  data: () => ({
+    // forcibly rerender the player component
+    // when the artist components go one after the other
+    uniqPlayerKey: 100,
+  }),
   components: {
     AnswerArtist,
-    VLives,
-    VTimer,
     VPlayer,
   },
   methods: {
     checkAnswer(value) {
-      const answer = value === this.question.song.title;
+      const isAnswerSuccess = value === this.question.song.title;
 
-      this.updateGameState({ answer });
-      this.nextLevel();
+      this.uniqPlayerKey += 1;
+      this.$emit('update', this.updateState(
+        this.game,
+        {
+          isAnswerSuccess,
+          time: this.getAnswerTime(),
+        },
+      ));
     },
   },
 };

@@ -4,10 +4,13 @@
     class="main-answer-wrapper"
     @click.prevent="checkAnswer"
   >
-    <input class="main-answer-r" type="radio" :id="id" name="answer" :value="value"/>
+    <input class="main-answer-r" type="radio" name="answer" :id="id" :value="value" />
     <label class="main-answer" :for="id">
-      <img class="main-answer-preview" :src="preview"
-           :alt="title" width="134" height="134">
+      <img
+        class="main-answer-preview"
+        :src="preview"
+        :alt="title"
+      >
       {{ title }}
     </label>
   </div>

@@ -6,7 +6,7 @@
       v-if="game && Object.keys(game.questions).length"
       class="main-play"
       v-html="$t('play')"
-      @click="nextLevel"
+      @click="startGame"
     />
 
     <v-loader v-else />
@@ -20,6 +20,9 @@
 </template>
 
 <script>
+// services
+import GameService from '@/services/game-service';
+
 // mixins
 import gamePropsMixin from '@/mixins/gamePropsMixin';
 import gameQuestionMixin from '@/mixins/gameQuestionMixin';
@@ -36,10 +39,20 @@ export default {
     VLoader,
   },
   created() {
-    this.$store.dispatch('game/FILL_QUESTIONS');
+    this.fillQuestions();
   },
   methods: {
-    nextLevel() {
+    async fillQuestions() {
+      const questions = await GameService.getQuestions()
+        .then(data => data)
+        .catch(() => {
+          this.$router.push('/error');
+        });
+
+      this.$emit('questions', questions);
+    },
+    startGame() {
+      this.$emit('start');
       this.$router.push({ name: this.question.type });
     },
   },

@@ -2,19 +2,19 @@
     "game_title": "Guess melody",
     "play": "Play game",
     "rules": "Game rules",
-    "description": "For 5 minutes you need to answer all questions.<br/>You can make a mistake 3 times.<br/>Good luck!",
+    "description": "For 3 minutes you need to answer all questions.<br/>You can make a mistake 3 times.<br/>Good luck!",
     "answer": "Reply",
     "artist": {
         "title": "Who sings this song?"
     },
     "genre": {
-        "title": "Select #{n} tracks"
+        "title": "Select genre #{n}"
     },
     "play_again": "Play again",
-    "compare": "It's better than #{value} ((player|players)):value.",
+    "compare": "That's #{value} out of #{all}",
     "success": {
         "title": "You're a real music lover!",
-        "stat": "In #{time} ((minute|minutes)):time <br/>you guessed #{tracks} ((melody|melodies)):tracks"
+        "stat": "You guessed #{tracks} ((melody|melodies)):tracks"
     },
     "fail": {
         "title": "You have lost",

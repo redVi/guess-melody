@@ -5,7 +5,7 @@
     <div class="main-stat" v-html="stat"></div>
 
     <span class="main-comparison" v-if="success">
-      {{ $t('compare', { value: 21 }) }}
+      {{ $t('compare', { value: 5, all: 15  }) }}
     </span>
 
     <span
@@ -30,6 +30,8 @@ export default {
     VLogo,
   },
   created() {
+    this.$emit('stop');
+
     if (!Object.keys(this.$route.query).length) {
       return;
     }
@@ -46,14 +48,18 @@ export default {
       return this.success ? this.$t('success.title') : this.$t('fail.title');
     },
     stat() {
+      const { time, guessedTracks } = this.game;
+      const resultTime = Math.floor(time);
+
       return this.success
-        ? this.$t('success.stat', { time: 5, tracks: this.game.guessedTracks })
+        ? this.$t('success.stat', { time: resultTime, tracks: guessedTracks })
         : this.$t('fail.stat');
     },
   },
   methods: {
     playAgain() {
-      this.$store.commit('game/RESET_STATE');
+      this.$emit('reset');
+      // this.$store.commit('game/RESET_STATE');
       this.$router.push({ name: 'home' });
     },
   },

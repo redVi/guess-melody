@@ -1,8 +1,5 @@
 <template>
-  <section class="main main--level main--level-genre">
-    <v-timer />
-    <v-lives :lives="game.lives" />
-
+  <section :class="`main main--level main--level-${this.question.type}`">
     <div class="main-wrap">
       <h2 class="title">
         {{ $t('genre.title', { n: question.genre }) }}
@@ -16,7 +13,13 @@
           :value="track.genre"
           ref="answer"
         >
-          <v-player slot="player" :src="track.path" />
+          <v-player
+            v-if="track"
+            slot="player"
+            :it-should-be-play="index === 0"
+            :multiply="true"
+            :src="track.path"
+          />
         </answer-genre>
 
         <button
@@ -38,8 +41,6 @@ import nextLevelMixin from '@/mixins/nextLevelMixin';
 
 // components
 import AnswerGenre from '@/components/answers/answer-genre.vue';
-import VLives from '@/components/base/v-lives.vue';
-import VTimer from '@/components/base/v-timer.vue';
 import VPlayer from '@/components/base/v-player.vue';
 
 export default {
@@ -51,29 +52,26 @@ export default {
   ],
   components: {
     AnswerGenre,
-    VLives,
-    VTimer,
     VPlayer,
   },
   methods: {
     checkAnswer() {
       const { question } = this;
-      const resultTime = this.startTime - new Date().getTime();
       const answers = Array.from(this.$refs.answer).filter(item => item.checked);
 
-      // the rules to check the correctness of all answers
       const tracksLength = question.tracks.filter(track => track.genre === question.genre).length;
       const answersLength = answers.length;
       const isCorrectValues = answers.every(item => item.value === question.genre);
       const isCorrectLength = tracksLength === answersLength;
 
-      this.updateGameState({
-        answer: isCorrectValues && isCorrectLength,
-        time: resultTime,
-        guessedTracks: answersLength,
-      });
-
-      this.nextLevel();
+      this.$emit('update', this.updateState(
+        this.game,
+        {
+          isAnswerSuccess: isCorrectValues && isCorrectLength,
+          time: this.getAnswerTime(),
+          guessedTracks: answersLength,
+        },
+      ));
     },
   },
 };

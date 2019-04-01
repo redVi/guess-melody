@@ -25,6 +25,6 @@ export default [
   },
   {
     path: '*',
-    component: Home,
+    component: load('error'),
   },
 ];

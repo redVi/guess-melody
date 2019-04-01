@@ -1,11 +1,11 @@
 const isDev = process.env.NODE_ENV === 'development';
-const BASE_URL = isDev ? 'http://localhost:3000' : '';
+const BASE_URL = isDev ? 'http://localhost:3000/api/v1' : '';
 
 class GameService {
-  getQuestions = async () => {
+  static getQuestions = async () => {
     const artists = [];
     const genres = [];
-    const res = await fetch(`${BASE_URL}/api/v1/questions`);
+    const res = await fetch(`${BASE_URL}/questions`);
 
     if (!res.ok) throw new Error(`Server error ${res.status}`);
 
@@ -23,24 +23,26 @@ class GameService {
       }
     });
 
-    const result = await (() => Promise.all([
+    const fetchMusic = await (() => Promise.all([
       ...artists.map(url => fetch(url)),
       ...genres.map(url => fetch(url)),
     ]))();
 
-    if (result) {
+    const isSuccess = Object.entries(fetchMusic).map(item => item[1]).every(i => i.ok);
+
+    if (isSuccess) {
       return body.data;
     }
 
-    return [];
+    throw new Error('music fetch failed');
   };
 
-  getStat = async () => {
-    const res = await fetch(`${BASE_URL}/api/v1/stat`);
+  static getStat = async () => {
+    const res = await fetch(`${BASE_URL}/stat`);
     const body = await res.json();
 
     return body.data;
   };
 }
 
-export default new GameService();
+export default GameService;

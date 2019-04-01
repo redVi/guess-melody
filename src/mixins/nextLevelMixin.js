@@ -1,29 +1,33 @@
 const nextLevelMixin = {
   data: () => ({
-    startTime: new Date().getTime(),
+    time: 0,
   }),
   created() {
-    this.startTime = new Date().getTime();
-
-    if (typeof this.question === 'undefined') {
-      this.$router.push({ name: 'home' });
-    }
+    this.initTimer();
+  },
+  updated() {
+    this.initTimer();
   },
   methods: {
-    updateGameState(args) {
-      this.$store.commit('game/REMOVE_QUESTION');
-      this.$store.commit('game/UPDATE_GAME', args);
+    initTimer() {
+      this.time = new Date().getTime();
     },
-    nextLevel() {
-      const { game, $router } = this;
+    getAnswerTime() {
+      return (new Date().getTime() - this.time) / 1000;
+    },
+    updateState(state, answer) {
+      const { isAnswerSuccess, guessedTracks, time } = answer;
 
-      if (game.questions.length <= 0 || game.lives <= 0) {
-        $router.push({ name: 'result', params: { success: game.lives > 0 } });
-
-        return;
+      if (isAnswerSuccess) {
+        state.totalPointsEarned += time <= 5 ? 2 : 1;
+        state.guessedTracks += guessedTracks || 1;
+      } else {
+        state.lives -= 1;
       }
 
-      $router.push({ name: game.questions[0].type });
+      state.questions.splice(0, 1);
+
+      return state;
     },
   },
 };

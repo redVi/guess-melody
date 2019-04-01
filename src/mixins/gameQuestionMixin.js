@@ -1,7 +1,9 @@
 const gameQuestionMixin = {
   computed: {
     question() {
-      return this.game.questions[0];
+      const hasQuestion = this.game && this.game.questions.length;
+
+      return hasQuestion ? this.game.questions[0] : [];
     },
   },
 };
