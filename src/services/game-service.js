@@ -1,47 +1,23 @@
-const isDev = process.env.NODE_ENV === 'development';
-const BASE_URL = isDev ? 'http://localhost:3000/api/v1' : '';
+import $http from '@/plugins/axios';
+import router from '@/router';
+import loadMusicService from '@/services/load-music-service';
 
 class GameService {
   static getQuestions = async () => {
-    const artists = [];
-    const genres = [];
-    const res = await fetch(`${BASE_URL}/questions`);
+    const res = await $http.get('/questions');
+    const { data } = res.data;
 
-    if (!res.ok) throw new Error(`Server error ${res.status}`);
-
-    const body = await res.json();
-
-    Object.values(body.data).forEach((value) => {
-      if (value.type === 'artist') {
-        artists.push(value.song.path);
-      }
-
-      if (value.type === 'genre') {
-        value.tracks.forEach((track) => {
-          genres.push(track.path);
-        });
-      }
-    });
-
-    const fetchMusic = await (() => Promise.all([
-      ...artists.map(url => fetch(url)),
-      ...genres.map(url => fetch(url)),
-    ]))();
-
-    const isSuccess = Object.entries(fetchMusic).map(item => item[1]).every(i => i.ok);
-
-    if (isSuccess) {
-      return body.data;
+    if (loadMusicService(data)) {
+      return data;
     }
 
-    throw new Error('music fetch failed');
+    router.push('/error');
+    return Promise.reject();
   };
 
   static getStat = async () => {
-    const res = await fetch(`${BASE_URL}/stat`);
-    const body = await res.json();
-
-    return body.data;
+    const res = await $http.get('/stat');
+    return res.data.data;
   };
 }
 

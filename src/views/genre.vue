@@ -1,5 +1,5 @@
 <template>
-  <section :class="`main main--level main--level-${this.question.type}`">
+  <section class="main main--level main--level-genre">
     <div class="main-wrap">
       <h2 class="title">
         {{ $t('genre.title', { n: question.genre }) }}
@@ -41,7 +41,7 @@ import nextLevelMixin from '@/mixins/nextLevelMixin';
 
 // components
 import AnswerGenre from '@/components/answers/answer-genre.vue';
-import VPlayer from '@/components/base/v-player.vue';
+import VPlayer from '@/components/core/v-player.vue';
 
 export default {
   name: 'Genre',

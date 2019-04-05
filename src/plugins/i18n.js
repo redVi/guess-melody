@@ -18,6 +18,7 @@ const formatter = new BabelfishFormatter({
 
 const messages = {
   'en-US': en,
+  'ru-RU': ru,
   en,
   ru,
 };

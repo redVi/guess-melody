@@ -3,31 +3,31 @@ $color-orange = #ff9749
 $color-text-dark = #230d1a
 $color-text-grey = gray
 $font = "Fira Sans", sans-serif
-$layout-height = 850px
+$layout-height = 100vh
 $layout-width = 780px
 
 html, body
   padding: 0
   margin: 0
+  font-size 16px
 
 html
   background: #1d121f linear-gradient(90deg, #1d121f, #270a17)
-  height: 100%
 
 body
-  align-items: center
-  background: url("/img/vinyl.png") center no-repeat
   color: #fff
-  display: flex
+  background-color: $color-beige
   font: 1em $font
-  justify-content: center
-  height: 100%
   min-height: $layout-height
 
 .app
-  height: $layout-height
+  display: flex
+  align-items: center
   position: relative
-  width: $layout-width
+  max-width: $layout-width
+  min-height: $layout-height
+  margin: auto
+  padding 0 12px
 
 .copyright
   bottom: 2em
@@ -52,3 +52,10 @@ body
 
 .copyright-link:hover
   color: #f00
+
+@media (min-width: 640px)
+  body
+    background: url("/img/vinyl.png") center no-repeat
+    font-size 1.2em
+  app
+    padding 0

@@ -1,6 +1,9 @@
 <template>
-  <section class="main main--result">
-    <v-logo />
+  <v-loader v-if="loading" />
+
+  <section class="main main--result" v-else>
+    <v-logo class="result__logo" />
+
     <h2 class="title">{{ title }}</h2>
     <div class="main-stat" v-html="stat"></div>
 
@@ -20,23 +23,30 @@
 </template>
 
 <script>
+// services
+import GameService from '@/services/game-service';
+
+// mixins
 import gamePropsMixin from '@/mixins/gamePropsMixin';
-import VLogo from '@/components/base/v-logo.vue';
+
+// components
+import VLogo from '@/components/core/v-logo.vue';
+import VLoader from '@/components/core/v-loader.vue';
 
 export default {
   name: 'Result',
   mixins: [gamePropsMixin],
   components: {
     VLogo,
+    VLoader,
   },
+  data: () => ({
+    loading: true,
+    results: [],
+  }),
   created() {
     this.$emit('stop');
-
-    if (!Object.keys(this.$route.query).length) {
-      return;
-    }
-
-    this.$route.params.success = true;
+    this.getStat();
   },
   computed: {
     success() {
@@ -57,9 +67,13 @@ export default {
     },
   },
   methods: {
+    async getStat() {
+      this.results = await GameService.getStat().finally(() => {
+        this.loading = false;
+      });
+    },
     playAgain() {
       this.$emit('reset');
-      // this.$store.commit('game/RESET_STATE');
       this.$router.push({ name: 'home' });
     },
   },

@@ -21,12 +21,3 @@ export default {
   },
 };
 </script>
-
-<style lang="stylus" scoped>
-.main-lives
-  font-size: 2em
-  font-weight: 300
-  right: 40px
-  top: 8px
-  position: absolute
-</style>

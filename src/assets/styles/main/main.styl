@@ -4,31 +4,14 @@
   display: flex
   flex-direction: column
   flex-wrap: wrap
-  height: 100%
+  width: 100%
   justify-content: center
   position: relative
-  width: 100%
-
-.main-wrap
-  position: relative
-  z-index: 1
-
-.logo
-  background: url("/img/melody-logo.png") center no-repeat
-  height: 83px
-  left: 50%
-  margin-top: 170px
-  overflow: hidden
-  position: absolute
-  text-indent: -100em
-  top: 0
-  transform: translateX(-50%)
-  width: 186px
 
 .title
   color: $color-text-dark
   display: block
-  font: italic 300 2em $font
+  font: italic 300 1.6em $font
   margin: 0 0 0.2em
 
 .text
@@ -37,7 +20,10 @@
   font: 300 0.9em $font
   margin: 0 0 1em
 
+@import 'logo.styl'
+@import 'timer.styl'
+@import 'lives.styl'
+@import 'player.styl'
 @import '--level/main--level.styl'
 @import '--result/main--result.styl'
 @import '--welcome/main--welcome.styl'
-@import 'timer.styl'

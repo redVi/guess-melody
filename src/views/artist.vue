@@ -1,5 +1,5 @@
 <template>
-  <section :class="`main main--level main--level-${this.question.type}`">
+  <section class="main main--level main--level-artist">
     <div class="main-wrap">
       <h2 class="title main-title">
         {{ $t('artist.title') }}
@@ -35,7 +35,7 @@ import nextLevelMixin from '@/mixins/nextLevelMixin';
 
 // components
 import AnswerArtist from '@/components/answers/answer-artist.vue';
-import VPlayer from '@/components/base/v-player.vue';
+import VPlayer from '@/components/core/v-player.vue';
 
 export default {
   name: 'Artist',

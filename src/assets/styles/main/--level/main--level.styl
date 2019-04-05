@@ -3,18 +3,18 @@ $preview-spacing = 11px
 
 .main--level
   justify-content: flex-start
-  padding-top: 210px
+  padding-top: 4em
   .main-title
     margin-bottom: 0.8em
 
 .main-player
   height: 55px
   margin-bottom: 80px
-  overflow: hidden
-  width: 530px
 
 .main-list
   display: flex
+  flex-flow: row wrap
+  justify-content: center
   margin: 60px auto 0
 
 .main-answer-r
@@ -55,5 +55,9 @@ $preview-spacing = 11px
   overflow: hidden
   width: $preview-size
   object-fit: cover
+
+@media (min-width: 640px)
+  .main--level
+    padding-top 0
 
 @import 'genre.styl'

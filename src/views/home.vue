@@ -28,8 +28,8 @@ import gamePropsMixin from '@/mixins/gamePropsMixin';
 import gameQuestionMixin from '@/mixins/gameQuestionMixin';
 
 // components
-import VLogo from '@/components/base/v-logo.vue';
-import VLoader from '@/components/base/v-loader.vue';
+import VLogo from '@/components/core/v-logo.vue';
+import VLoader from '@/components/core/v-loader.vue';
 
 export default {
   name: 'Home',
@@ -43,13 +43,7 @@ export default {
   },
   methods: {
     async fillQuestions() {
-      const questions = await GameService.getQuestions()
-        .then(data => data)
-        .catch(() => {
-          this.$router.push('/error');
-        });
-
-      this.$emit('questions', questions);
+      this.$emit('questions', await GameService.getQuestions());
     },
     startGame() {
       this.$emit('start');
