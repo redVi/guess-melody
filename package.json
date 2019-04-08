@@ -27,9 +27,7 @@
     "@vue/cli-plugin-unit-mocha": "^3.5.0",
     "@vue/cli-service": "^3.5.3",
     "@vue/eslint-config-airbnb": "^4.0.0",
-    "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "^10.0.1",
-    "chai": "^4.1.2",
     "eslint": "^5.15.3",
     "eslint-plugin-vue": "^5.0.0",
     "stylus": "^0.54.5",
@@ -46,7 +44,8 @@
       "@vue/airbnb"
     ],
     "rules": {
-      "no-param-reassign": "off"
+      "no-param-reassign": "off",
+      "import/extensions": "off"
     },
     "parserOptions": {
       "parser": "babel-eslint"

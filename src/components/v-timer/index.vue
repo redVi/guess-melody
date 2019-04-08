@@ -30,3 +30,5 @@ export default {
   },
 };
 </script>
+
+<style lang="stylus" scoped src="./v-timer.styl"></style>

@@ -10,6 +10,9 @@
   position: absolute
   left: -900em
 
+.genre-answer input:focus + label
+  outline: auto
+
 .genre-answer-check
   background: url("/img/icon-note-inactive.png") no-repeat
   height: 49px
@@ -35,3 +38,7 @@ input[type=checkbox]:checked + .genre-answer-check
 
 .genre-answer-send:hover
   color: $color-orange
+
+@media (min-width: 560px)
+  .player-wrapper
+    min-width: 420px

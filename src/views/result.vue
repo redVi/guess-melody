@@ -1,47 +1,39 @@
 <template>
-  <v-loader v-if="loading" />
+  <section v-if="results.length" class="main main--result">
+    <h2 class="title">
+      {{ title }}
+    </h2>
 
-  <section class="main main--result" v-else>
-    <v-logo class="result__logo" />
+    <div class="main-stat">
+      {{ stat }}
+    </div>
 
-    <h2 class="title">{{ title }}</h2>
-    <div class="main-stat" v-html="stat"></div>
-
-    <span class="main-comparison" v-if="success">
-      {{ $t('compare', { value: 5, all: 15  }) }}
+    <span v-if="success" class="main-comparison">
+      {{ $t('compare', { value: gamerIndex, all: playersCount }) }}
     </span>
 
-    <span
-      role="button"
+    <button
       tabindex="0"
       class="main-replay"
       @click="playAgain"
     >
       {{ $t('play_again') }}
-    </span>
+    </button>
   </section>
+
+  <v-loader v-else />
 </template>
 
 <script>
-// services
 import GameService from '@/services/game-service';
-
-// mixins
-import gamePropsMixin from '@/mixins/gamePropsMixin';
-
-// components
-import VLogo from '@/components/core/v-logo.vue';
-import VLoader from '@/components/core/v-loader.vue';
+import VLoader from '@/components/v-loader';
 
 export default {
   name: 'Result',
-  mixins: [gamePropsMixin],
   components: {
-    VLogo,
     VLoader,
   },
   data: () => ({
-    loading: true,
     results: [],
   }),
   created() {
@@ -50,27 +42,46 @@ export default {
   },
   computed: {
     success() {
-      const { params } = this.$route;
-
-      return Object.keys(params).length && params.success;
+      const { query } = this.$route;
+      return Object.keys(query).length && query.success;
     },
     title() {
       return this.success ? this.$t('success.title') : this.$t('fail.title');
     },
     stat() {
-      const { time, guessedTracks } = this.game;
-      const resultTime = Math.floor(time);
-
+      const { time, tracks } = this.$route.query;
       return this.success
-        ? this.$t('success.stat', { time: resultTime, tracks: guessedTracks })
+        ? this.$t('success.stat', { time, tracks })
         : this.$t('fail.stat');
+    },
+    // return results + our gamer
+    playersCount() {
+      return this.results.length + 1;
+    },
+    gamerIndex() {
+      const { time, tracks } = this.$route.query;
+      return this.getGamerIndex(this.results, { time, answers: tracks });
     },
   },
   methods: {
-    async getStat() {
-      this.results = await GameService.getStat().finally(() => {
-        this.loading = false;
+    sortResults(all, current) {
+      const total = all.concat([current]);
+
+      return total.sort((prev, next) => {
+        if (next.answers === prev.answers) return prev.time - next.time;
+        return next.answers - prev.answers;
       });
+    },
+    getGamerIndex(all, current) {
+      const total = this.sortResults(all, current);
+      const indexOfAnswer = total.findIndex(
+        elem => elem.time === current.time && elem.answers === current.answers,
+      );
+
+      return indexOfAnswer + 1;
+    },
+    async getStat() {
+      this.results = await GameService.getStat();
     },
     playAgain() {
       this.$emit('reset');

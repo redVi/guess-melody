@@ -2,8 +2,11 @@
     "game_title": "Guess melody",
     "play": "Play game",
     "rules": "Game rules",
+    "time": "#{current} out of #{duration} seconds",
     "description": "For 3 minutes you need to answer all questions.<br/>You can make a mistake 3 times.<br/>Good luck!",
     "answer": "Reply",
+    "error": "Something were wrong...",
+    "back_home": "Back home",
     "artist": {
         "title": "Who sings this song?"
     },
@@ -14,7 +17,7 @@
     "compare": "That's #{value} out of #{all}",
     "success": {
         "title": "You're a real music lover!",
-        "stat": "You guessed #{tracks} ((melody|melodies)):tracks"
+        "stat": "You guessed #{tracks} ((melody|melodies)):tracks in #{time} ((second|seconds)):time"
     },
     "fail": {
         "title": "You have lost",

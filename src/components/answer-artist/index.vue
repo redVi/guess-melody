@@ -3,6 +3,7 @@
     v-if="id && value"
     class="main-answer-wrapper"
     @click.prevent="checkAnswer"
+    @keydown.space="checkAnswer"
   >
     <input class="main-answer-r" type="radio" name="answer" :id="id" :value="value" />
     <label class="main-answer" :for="id">

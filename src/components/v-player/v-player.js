@@ -1,34 +1,3 @@
-<template>
-  <div class="player-wrapper">
-    <div class="player">
-      <audio
-        :src="src"
-        :type="type"
-        :play="play"
-        @timeupdate="onTimeUpdateListener"
-        @loadedmetadata="onDurationListener"
-        @ended="revertState"
-        ref="audio"
-      ></audio>
-
-      <button
-        class="player-control"
-        :class="playClass"
-        aria-label="play or stop track"
-        v-on-clickaway="rerender"
-        @click.prevent="revertState"
-      ></button>
-
-      <div class="player-track">
-        <span class="player-status">
-          {{ currentTime }} из {{ duration }} секунд
-        </span>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script>
 import { mixin as clickaway } from 'vue-clickaway';
 
 export default {
@@ -106,4 +75,3 @@ export default {
     },
   },
 };
-</script>

@@ -17,8 +17,8 @@
 import { SECOND, TIME_OF_GAME, INITIAL_STATE } from '@/constants';
 
 // components
-import VLives from '@/components/core/v-lives.vue';
-import VTimer from '@/components/core/v-timer.vue';
+import VLives from '@/components/v-lives';
+import VTimer from '@/components/v-timer';
 
 export default {
   components: {
@@ -43,7 +43,12 @@ export default {
       if (isGameConditionDone) {
         this.$router.push({
           name: 'result',
-          params: { success: game.lives > 0 },
+          query: {
+            success: game.lives > 0,
+            time: game.time,
+            tracks: game.guessedTracks,
+            total: game.totalPointsEarned,
+          },
         });
 
         return;
@@ -61,6 +66,7 @@ export default {
       }, TIME_OF_GAME);
     },
     stopGame() {
+      this.game.lives = 0;
       window.clearInterval(this.interval);
       window.clearInterval(this.timer);
     },

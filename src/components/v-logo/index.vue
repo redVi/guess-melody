@@ -9,3 +9,5 @@ export default {
   name: 'VLogo',
 };
 </script>
+
+<style lang="stylus" scoped src="./v-logo.styl"></style>

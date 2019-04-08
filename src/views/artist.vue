@@ -20,6 +20,7 @@
           :value="artist.value"
           :preview="artist.preview"
           :title="artist.title"
+          :tabindex="index"
           @check="checkAnswer(artist.title)"
         />
       </div>
@@ -34,8 +35,8 @@ import gameQuestionMixin from '@/mixins/gameQuestionMixin';
 import nextLevelMixin from '@/mixins/nextLevelMixin';
 
 // components
-import AnswerArtist from '@/components/answers/answer-artist.vue';
-import VPlayer from '@/components/core/v-player.vue';
+import VPlayer from '@/components/v-player';
+import AnswerArtist from '@/components/answer-artist';
 
 export default {
   name: 'Artist',

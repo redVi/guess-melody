@@ -27,13 +27,13 @@ export default {
     },
   },
   mounted() {
-    this.ok();
+    this.checkPlay();
   },
   beforeDestroy() {
     this.$emit('rerender');
   },
   methods: {
-    ok() {
+    checkPlay() {
       if (this.play) {
         this.$refs.audio.play();
       } else {

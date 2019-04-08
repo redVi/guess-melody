@@ -1,12 +1,10 @@
-import Home from '@/views/home.vue';
-
 const load = component => () => import(/* webpackChunkName: "[request]" */ `@/views/${component}.vue`);
 
 export default [
   {
     path: '/',
     name: 'home',
-    component: Home,
+    component: load('home'),
   },
   {
     path: '/artist',

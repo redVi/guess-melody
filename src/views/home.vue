@@ -28,8 +28,8 @@ import gamePropsMixin from '@/mixins/gamePropsMixin';
 import gameQuestionMixin from '@/mixins/gameQuestionMixin';
 
 // components
-import VLogo from '@/components/core/v-logo.vue';
-import VLoader from '@/components/core/v-loader.vue';
+import VLogo from '@/components/v-logo';
+import VLoader from '@/components/v-loader';
 
 export default {
   name: 'Home',

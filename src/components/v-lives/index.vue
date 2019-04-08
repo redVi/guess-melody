@@ -21,3 +21,5 @@ export default {
   },
 };
 </script>
+
+<style lang="stylus" scoped src="./v-lives.styl"></style>

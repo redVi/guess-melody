@@ -40,8 +40,8 @@ import gameQuestionMixin from '@/mixins/gameQuestionMixin';
 import nextLevelMixin from '@/mixins/nextLevelMixin';
 
 // components
-import AnswerGenre from '@/components/answers/answer-genre.vue';
-import VPlayer from '@/components/core/v-player.vue';
+import VPlayer from '@/components/v-player';
+import AnswerGenre from '@/components/answer-genre';
 
 export default {
   name: 'Genre',
