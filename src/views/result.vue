@@ -54,7 +54,7 @@ export default {
         ? this.$t('success.stat', { time, tracks })
         : this.$t('fail.stat');
     },
-    // return results + our gamer
+    // return gamers length + our gamer
     playersCount() {
       return this.results.length + 1;
     },

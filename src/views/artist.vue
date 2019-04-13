@@ -9,7 +9,7 @@
         v-if="question.song"
         :it-should-be-play="true"
         :src="question.song.path"
-        :key="uniqPlayerKey"
+        :key="playerKey"
       />
 
       <div class="main-list">
@@ -29,12 +29,9 @@
 </template>
 
 <script>
-// mixins
 import gamePropsMixin from '@/mixins/gamePropsMixin';
 import gameQuestionMixin from '@/mixins/gameQuestionMixin';
 import nextLevelMixin from '@/mixins/nextLevelMixin';
-
-// components
 import VPlayer from '@/components/v-player';
 import AnswerArtist from '@/components/answer-artist';
 
@@ -48,7 +45,7 @@ export default {
   data: () => ({
     // forcibly rerender the player component
     // when the artist components go one after the other
-    uniqPlayerKey: 100,
+    playerKey: 100,
   }),
   components: {
     AnswerArtist,
@@ -58,7 +55,7 @@ export default {
     checkAnswer(value) {
       const isAnswerSuccess = value === this.question.song.title;
 
-      this.uniqPlayerKey += 1;
+      this.playerKey += 1;
       this.$emit('update', this.updateState(
         this.game,
         {

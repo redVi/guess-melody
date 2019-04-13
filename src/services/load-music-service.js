@@ -1,3 +1,5 @@
+import $http from '@/plugins/axios';
+
 const loadMusicService = async (data) => {
   const artists = [];
   const genres = [];
@@ -17,16 +19,11 @@ const loadMusicService = async (data) => {
 
   // fetch all songs
   const fetchMusic = await (() => Promise.all([
-    ...artists.map(url => fetch(url)),
-    ...genres.map(url => fetch(url)),
+    ...artists.map(url => $http.get(url)),
+    ...genres.map(url => $http.get(url)),
   ]))();
 
-  // all songs downloaded?
-  const musicDownloaded = Object.entries(fetchMusic)
-    .map(song => song[1])
-    .every(response => response.ok);
-
-  return musicDownloaded;
+  return fetchMusic;
 };
 
 export default loadMusicService;

@@ -34,12 +34,9 @@
 </template>
 
 <script>
-// mixins
 import gamePropsMixin from '@/mixins/gamePropsMixin';
 import gameQuestionMixin from '@/mixins/gameQuestionMixin';
 import nextLevelMixin from '@/mixins/nextLevelMixin';
-
-// components
 import VPlayer from '@/components/v-player';
 import AnswerGenre from '@/components/answer-genre';
 

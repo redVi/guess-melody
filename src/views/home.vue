@@ -20,14 +20,9 @@
 </template>
 
 <script>
-// services
 import GameService from '@/services/game-service';
-
-// mixins
 import gamePropsMixin from '@/mixins/gamePropsMixin';
 import gameQuestionMixin from '@/mixins/gameQuestionMixin';
-
-// components
 import VLogo from '@/components/v-logo';
 import VLoader from '@/components/v-loader';
 
