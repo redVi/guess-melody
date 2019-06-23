@@ -15,8 +15,8 @@
 
 <script>
 import { SECOND, TIME_OF_GAME, INITIAL_STATE } from '@/constants';
-import VLives from '@/components/v-lives';
-import VTimer from '@/components/v-timer';
+import VLives from '@/components/v-lives/v-lives';
+import VTimer from '@/components/v-timer/v-timer';
 
 export default {
   components: {

@@ -26,7 +26,7 @@
 
 <script>
 import GameService from '@/services/game-service';
-import VLoader from '@/components/v-loader';
+import VLoader from '@/components/v-loader/v-loader';
 
 export default {
   name: 'Result',

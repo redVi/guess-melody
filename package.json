@@ -23,7 +23,6 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-eslint": "^3.5.0",
-    "@vue/cli-plugin-pwa": "^3.5.0",
     "@vue/cli-plugin-unit-mocha": "^3.5.0",
     "@vue/cli-service": "^3.5.3",
     "@vue/eslint-config-airbnb": "^4.0.0",
@@ -45,7 +44,9 @@
     ],
     "rules": {
       "no-param-reassign": "off",
-      "import/extensions": "off"
+      "import/extensions": "off",
+      "key-spacing": "off",
+      "no-multi-spaces": "off"
     },
     "parserOptions": {
       "parser": "babel-eslint"

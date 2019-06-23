@@ -19,24 +19,12 @@
 
 <script>
 export default {
-  name: 'ArtistAnswer',
+  name: 'AnswerArtist',
   props: {
-    id: {
-      type: String,
-      required: true,
-    },
-    value: {
-      type: String,
-      required: true,
-    },
-    preview: {
-      type: String,
-      default: '',
-    },
-    title: {
-      type: String,
-      default: '',
-    },
+    id      : { type: String, required: true },
+    value   : { type: String, required: true },
+    preview : { type: String, default: '' },
+    title   : { type: String, default: '' },
   },
   methods: {
     checkAnswer() {

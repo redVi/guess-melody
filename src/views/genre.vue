@@ -22,10 +22,7 @@
           />
         </answer-genre>
 
-        <button
-          class="genre-answer-send"
-          type="submit"
-        >
+        <button class="genre-answer-send" type="submit">
           {{ $t('answer') }}
         </button>
       </form>
@@ -37,8 +34,8 @@
 import gamePropsMixin from '@/mixins/gamePropsMixin';
 import gameQuestionMixin from '@/mixins/gameQuestionMixin';
 import nextLevelMixin from '@/mixins/nextLevelMixin';
-import VPlayer from '@/components/v-player';
-import AnswerGenre from '@/components/answer-genre';
+import VPlayer from '@/components/v-player/v-player';
+import AnswerGenre from '@/components/answer-genre/answer-genre';
 
 export default {
   name: 'Genre',

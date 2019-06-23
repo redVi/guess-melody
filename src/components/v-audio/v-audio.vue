@@ -13,18 +13,9 @@
 export default {
   name: 'VAudio',
   props: {
-    play: {
-      type: Boolean,
-      default: false,
-    },
-    src: {
-      type: String,
-      default: '',
-    },
-    type: {
-      type: String,
-      default: 'audio/mp3',
-    },
+    play : { type: Boolean, default: false },
+    src  : { type: String,  default: '' },
+    type : { type: String,  default: 'audio/mp3' },
   },
   mounted() {
     this.checkPlay();

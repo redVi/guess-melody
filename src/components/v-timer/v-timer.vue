@@ -15,10 +15,7 @@ const formatTime = (time) => {
 export default {
   name: 'VTimer',
   props: {
-    time: {
-      type: Number,
-      required: true,
-    },
+    time: { type: Number, required: true },
   },
   computed: {
     minutes() {

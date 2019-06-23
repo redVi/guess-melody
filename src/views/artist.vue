@@ -32,8 +32,8 @@
 import gamePropsMixin from '@/mixins/gamePropsMixin';
 import gameQuestionMixin from '@/mixins/gameQuestionMixin';
 import nextLevelMixin from '@/mixins/nextLevelMixin';
-import VPlayer from '@/components/v-player';
-import AnswerArtist from '@/components/answer-artist';
+import VPlayer from '@/components/v-player/v-player';
+import AnswerArtist from '@/components/answer-artist/answer-artist.vue';
 
 export default {
   name: 'Artist',

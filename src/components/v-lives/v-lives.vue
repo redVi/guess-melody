@@ -14,10 +14,7 @@
 export default {
   name: 'VLives',
   props: {
-    lives: {
-      type: Number,
-      default: 0,
-    },
+    lives: { type: Number, default: 0 },
   },
 };
 </script>

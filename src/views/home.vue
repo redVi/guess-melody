@@ -23,8 +23,8 @@
 import GameService from '@/services/game-service';
 import gamePropsMixin from '@/mixins/gamePropsMixin';
 import gameQuestionMixin from '@/mixins/gameQuestionMixin';
-import VLogo from '@/components/v-logo';
-import VLoader from '@/components/v-loader';
+import VLogo from '@/components/v-logo/v-logo';
+import VLoader from '@/components/v-loader/v-loader';
 
 export default {
   name: 'Home',
