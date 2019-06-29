@@ -4,7 +4,7 @@ import router from '@/router';
 const $http = axios.create();
 const errorResolver = error => router.push('/error', { params: error });
 
-$http.defaults.baseURL = 'https://glacial-dusk-78330.herokuapp.com';
+$http.defaults.baseURL = 'https://glacial-dusk-78330.herokuapp.com/api';
 
 $http.interceptors.request.use(
   config => config,
