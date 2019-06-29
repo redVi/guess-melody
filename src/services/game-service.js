@@ -4,8 +4,9 @@ import router from '@/router';
 class GameService {
   static getQuestions = async () => {
     const res = await $http.get('/v1/questions');
+    const { data } = res;
 
-    if (res.data) return res.data;
+    if (data) return data.data;
 
     router.push('/error');
     return Promise.reject();
