@@ -3,6 +3,8 @@ module.exports = {
     ? '/guess-melody/'
     : '/',
   productionSourceMap: false,
+  filenameHashing: false,
+  crossorigin: 'anonymous',
   css: {
     modules: true,
   },
