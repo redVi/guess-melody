@@ -1,12 +1,11 @@
 # guess-melody
 
-Game "guess melody". You need to answer all songs or artists.
+Game [guess melody](https://redvi.github.io/guess-melody/). You need to answer all songs or artists.
 
 ## Project setup
 ```
 npm install
 npm run serve
-npm run test
 ```
 
 ### Compiles and minifies for production
