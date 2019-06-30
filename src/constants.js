@@ -1,6 +1,6 @@
 const SECOND = 1000;
 const MINUTE = 60000;
-const TIME_OF_GAME = MINUTE * 3;
+const TIME_OF_GAME = MINUTE * 5;
 
 const INITIAL_STATE = () => ({
   lives: 3,

@@ -3,7 +3,7 @@
     "play": "Play game",
     "rules": "Game rules",
     "time": "#{current} out of #{duration} seconds",
-    "description": "For 3 minutes you need to answer all questions.<br/>You can make a mistake 3 times.<br/>Good luck!",
+    "description": "For 5 minutes you need to answer all questions.<br/>You can make a mistake 3 times.<br/>Good luck!",
     "answer": "Reply",
     "error": "Something were wrong...",
     "back_home": "Back home",
