@@ -1,5 +1,7 @@
 # guess-melody
 
+Game "guess the melody.". You need to answer all songs or artists.
+
 ## Project setup
 ```
 npm install
@@ -11,3 +13,5 @@ npm run test
 ```
 npm run build
 ```
+
+See details in `package.json`.
