@@ -1,8 +1,8 @@
 import $http from '@/plugins/axios';
 import router from '@/router';
 
-class GameService {
-  static getQuestions = async () => {
+const gameService = {
+  getQuestions: async () => {
     const res = await $http.get('/v1/questions');
     const { data } = res;
 
@@ -10,12 +10,11 @@ class GameService {
 
     router.push('/error');
     return Promise.reject();
-  };
-
-  static getStat = async () => {
+  },
+  getStat: async () => {
     const res = await $http.get('/v1/stat');
     return res.data.data;
-  };
-}
+  },
+};
 
-export default GameService;
+export default gameService;

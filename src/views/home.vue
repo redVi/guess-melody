@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import GameService from '@/services/game-service';
+import gameService from '@/services/game-service';
 import gamePropsMixin from '@/mixins/gamePropsMixin';
 import gameQuestionMixin from '@/mixins/gameQuestionMixin';
 import VLogo from '@/components/v-logo/v-logo';
@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     async fillQuestions() {
-      this.$emit('questions', await GameService.getQuestions());
+      this.$emit('questions', await gameService.getQuestions());
     },
     startGame() {
       this.$emit('start');

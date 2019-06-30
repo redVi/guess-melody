@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import GameService from '@/services/game-service';
+import gameService from '@/services/game-service';
 import VLoader from '@/components/v-loader/v-loader';
 
 export default {
@@ -81,7 +81,7 @@ export default {
       return indexOfAnswer + 1;
     },
     async getStat() {
-      this.results = await GameService.getStat();
+      this.results = await gameService.getStat();
     },
     playAgain() {
       this.$emit('reset');
