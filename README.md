@@ -1,6 +1,6 @@
 # guess-melody
 
-Game "guess the melody.". You need to answer all songs or artists.
+Game "guess melody". You need to answer all songs or artists.
 
 ## Project setup
 ```

@@ -3,7 +3,7 @@
     <img
       v-for="index in lives"
       :key="index"
-      src="/img/icon-heart.svg"
+      src="img/icon-heart.svg"
       width="24"
       height="24"
     >
